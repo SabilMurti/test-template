@@ -1,0 +1,34 @@
+{
+  "meta": {
+    "name": "Simple Landing Laravel 12",
+    "version": "1.0.0"
+  },
+  "prompts": [
+    {
+      "key": "project_title",
+      "question": "Apa nama judul website project ini?",
+      "default": "My Awesome Project"
+    }
+  ],
+  "actions": [
+    {
+      "type": "copy",
+      "from": ".env.example",
+      "to": ".env"
+    },
+    {
+      "type": "replace_text",
+      "file": ".env",
+      "search": "APP_NAME=Laravel", 
+      "replace": "APP_NAME=\"{{ inputs.project_title }}\""
+    },
+    {
+      "type": "run_command",
+      "command": "php artisan key:generate"
+    }
+  ],
+  "dependencies": {
+    "manager": "composer",
+    "install": true
+  }
+}
